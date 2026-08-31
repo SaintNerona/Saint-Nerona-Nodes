@@ -1,0 +1,39 @@
+# Python caches and test reports
+__pycache__/
+*.py[cod]
+*.egg-info/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging
+build/
+dist/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local configuration and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Models and generated checkpoints do not belong in the node repository
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx

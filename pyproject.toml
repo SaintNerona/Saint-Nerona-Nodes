@@ -1,0 +1,11 @@
+[project]
+name = "saint-nerona-nodes"
+version = "0.3.0"
+description = "Utility nodes for ComfyUI"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.comfy]
+DisplayName = "Saint Nerona Nodes"
