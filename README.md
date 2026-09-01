@@ -10,6 +10,7 @@ music-video workflows and everyday image handling.
 | `(Saint Nerona) H3 Shot Timing` | `Saint Nerona/Audio` | Places a shot on a shared frame timeline and calculates a valid H3 generation length. |
 | `(Saint Nerona) Audio Segment by Frames` | `Saint Nerona/Audio` | Slices ComfyUI audio at exact video-frame boundaries. |
 | `(Saint Nerona) H3 Decoded Music Video Streamer` | `Saint Nerona/H3` | Assembles contiguous H3 continuation clips while retaining audio decoded from their sampled H3 AV latents. |
+| `(Saint Nerona) H3 AV Latent Loader` | `Saint Nerona/H3` | Reloads an archived joint H3 checkpoint in the form required by the video and audio VAE decoders. |
 | `(Saint Nerona) Image Megapixel Size` | `Saint Nerona/Image` | Calculates dimensions from an image aspect ratio, target megapixels, and a required multiple. |
 | `(Saint Nerona) Hold Image Preview` | `Saint Nerona/Image` | Previews, stores, and passes through an optional image. |
 
@@ -88,6 +89,18 @@ joint AV latent:
   newest file in a directory;
 - use a fixed positive `clip_index` only when a stable overwriteable chain slot
   is preferable to an attempt archive.
+
+## H3 AV Latent Loader
+
+Reloads an exact `.safetensors` checkpoint created from a sampled joint MiniMax
+H3 video/audio latent. Unlike a continuation-only loader, its output is packed
+as ComfyUI's decodable H3 `NestedTensor`, so it can connect directly to both
+`VAEDecode` and `VAEDecodeAudio`.
+
+Use an absolute checkpoint path or a path relative to `ComfyUI/output`. This is
+useful for recovering full generated handles, auditing H3-decoded audio, or
+re-exporting an accepted latent without rerunning diffusion. The node does not
+modify the checkpoint and does not accept video-only or audio-only files.
 
 ## Image Megapixel Size
 
